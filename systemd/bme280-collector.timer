@@ -1,0 +1,9 @@
+[Unit]
+Description=bme280 collector timer
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=30sec
+
+[Install]
+WantedBy=timers.target
