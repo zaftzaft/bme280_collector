@@ -3,4 +3,4 @@ Description=bme280 collector
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/bme280_collector
+ExecStart=/usr/bin/bme280_collector -p
