@@ -5,11 +5,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"golang.org/x/exp/io/i2c"
-
+	"github.com/alecthomas/kingpin/v2"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/quhar/bme280"
-	"gopkg.in/alecthomas/kingpin.v2"
+	"golang.org/x/exp/io/i2c"
 )
 
 var (
@@ -24,17 +23,17 @@ func Run() int {
 
 	bme280TemperatureGauge := prometheus.NewGauge(prometheus.GaugeOpts{
 		Name: "bme280_temperature",
-		Help: "",
+		Help: "Temperature measured by BME280 sensor",
 	})
 
 	bme280PressureGauge := prometheus.NewGauge(prometheus.GaugeOpts{
 		Name: "bme280_pressure",
-		Help: "",
+		Help: "Pressure measured by BME280 sensor",
 	})
 
 	bme280HumidityGauge := prometheus.NewGauge(prometheus.GaugeOpts{
 		Name: "bme280_humidity",
-		Help: "",
+		Help: "Humidity measured by BME280 sensor",
 	})
 
 	registry.MustRegister(bme280TemperatureGauge)
@@ -79,7 +78,7 @@ func Run() int {
 }
 
 func main() {
-	kingpin.Version("0.0.1")
+	kingpin.Version("0.0.2")
 	kingpin.HelpFlag.Short('h')
 	kingpin.Parse()
 	os.Exit(Run())
